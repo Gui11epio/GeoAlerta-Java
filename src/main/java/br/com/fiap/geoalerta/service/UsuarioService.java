@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,8 +21,14 @@ public class UsuarioService {
 
     private final ModelMapper modelMapper;
 
+    private final PasswordEncoder passwordEncoder;
+
     public UsuarioResponse cadastrar(UsuarioRequest dto) {
         Usuario usuario = modelMapper.map(dto, Usuario.class);
+
+        // Criptografa a senha antes de salvar
+        usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
+
         usuarioRepository.save(usuario);
         return modelMapper.map(usuario, UsuarioResponse.class);
     }
@@ -44,8 +51,9 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        usuario.setNome(dto.getNome());
+        usuario.setUser_name(dto.getUser_name());
         usuario.setSenha(dto.getSenha());
+        usuario.setEmail(dto.getEmail());
         usuario.setTelefone(dto.getTelefone());
 
         usuarioRepository.save(usuario);

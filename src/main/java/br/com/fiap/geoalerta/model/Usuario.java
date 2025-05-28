@@ -1,5 +1,6 @@
 package br.com.fiap.geoalerta.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,9 +19,14 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String user_name;
+    private String email;
+    @JsonIgnore
     private String senha;
     private String telefone;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Endereco endereco;
