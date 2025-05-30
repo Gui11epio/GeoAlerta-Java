@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "GeoAlerta",
                 version = "1.0",
-                description = "Documentação da API para aviso de deslizamento"
+                description = "Documentação da API para o aviso de deslizamento"
         )
 )
 
