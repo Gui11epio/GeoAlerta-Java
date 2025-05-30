@@ -21,7 +21,6 @@ public class Usuario {
     private Long id;
     private String user_name;
     private String email;
-    @JsonIgnore
     private String senha;
     private String telefone;
 

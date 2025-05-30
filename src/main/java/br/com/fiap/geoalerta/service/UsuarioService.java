@@ -25,10 +25,6 @@ public class UsuarioService {
 
     public UsuarioResponse cadastrar(UsuarioRequest dto) {
         Usuario usuario = modelMapper.map(dto, Usuario.class);
-
-        // Criptografa a senha antes de salvar
-        usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
-
         usuarioRepository.save(usuario);
         return modelMapper.map(usuario, UsuarioResponse.class);
     }
