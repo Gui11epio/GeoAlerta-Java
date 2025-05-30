@@ -43,8 +43,9 @@ dependencies {
     runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 
     // Lombok
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
 
     // Testes
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
