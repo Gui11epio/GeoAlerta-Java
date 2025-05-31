@@ -3,6 +3,7 @@ package br.com.fiap.geoalerta.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Usuario implements UserDetails {
     private String email;
     private String senha;
     private String telefone;
+    private UserRole role;
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private Endereco endereco;
@@ -29,7 +31,12 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        if (UserRole.ADMIN.equals(this.role)) {
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),
+                    new SimpleGrantedAuthority("ROLE_USER"));
+        } else {
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        }
     }
 
     @Override
@@ -65,7 +72,7 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(Long id, String user_name, String email, String senha, String telefone, Endereco endereco, List<Alerta> alertas) {
+    public Usuario(Long id, String user_name, String email, String senha, String telefone, Endereco endereco, List<Alerta> alertas, UserRole role) {
         this.id = id;
         this.user_name = user_name;
         this.email = email;
@@ -73,6 +80,7 @@ public class Usuario implements UserDetails {
         this.telefone = telefone;
         this.endereco = endereco;
         this.alertas = alertas;
+        this.role = role;
     }
 
     public Long getId() {
@@ -129,5 +137,13 @@ public class Usuario implements UserDetails {
 
     public void setAlertas(List<Alerta> alertas) {
         this.alertas = alertas;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }
