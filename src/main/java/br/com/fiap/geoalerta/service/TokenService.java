@@ -1,36 +1,54 @@
 package br.com.fiap.geoalerta.service;
 
 import br.com.fiap.geoalerta.model.Usuario;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.RequiredArgsConstructor;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 @Service
-@RequiredArgsConstructor
 public class TokenService {
-    private static final String SECRET_KEY = "minha-chave-secreta";
+    @Value("${api.security.token.secret}")
+    private String secret;
 
     public String generateToken(Usuario usuario) {
-        return Jwts.builder()
-                .setSubject(usuario.getEmail())
-                .claim("id", usuario.getId())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 1 dia
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
-                .compact();
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            return JWT.create()
+                    .withIssuer("apisecurity")
+                    .withSubject(usuario.getUser_name())
+                    .withExpiresAt(genExpirationDate())
+                    .sign(algorithm);
+        } catch (JWTCreationException exception) {
+            throw new RuntimeException("Erro na geração de token", exception);
+        }
     }
+
 
     public String validateToken(String token) {
         try {
-            return Jwts.parser().setSigningKey(SECRET_KEY)
-                    .parseClaimsJws(token)
-                    .getBody()
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            return JWT.require(algorithm)
+                    .withIssuer("apisecurity")
+                    .build()
+                    .verify(token)
                     .getSubject();
-        } catch (Exception e) {
-            return null;
+        } catch (JWTVerificationException exception) {
+            return "";
         }
+    }
+
+    private Instant genExpirationDate() {
+        return LocalDateTime
+                .now()
+                .plusMinutes(2)
+                .toInstant(ZoneOffset.of("-03:00"));
     }
 
 }

@@ -37,7 +37,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody AuthDTO authDTO) {
-        Usuario usuario = usuarioRepository.findByEmail(authDTO.email());
+        Usuario usuario = usuarioRepository.findByEmail(authDTO.getEmail());
         System.out.println("Usuário encontrado: " + usuario);
 
         if (usuario == null) {
@@ -47,8 +47,8 @@ public class AuthController {
 
         // Gera um token do tipo UserPasswordAuthentication para esse usuário e senha
         var userPwd = new UsernamePasswordAuthenticationToken(
-                authDTO.email(),
-                authDTO.senha()
+                authDTO.getEmail(),
+                authDTO.getSenha()
         );
         // Autentica o usuário
         var auth = this.authenticationManager.authenticate(userPwd);

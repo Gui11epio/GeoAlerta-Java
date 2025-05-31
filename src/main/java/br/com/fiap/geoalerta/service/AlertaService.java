@@ -9,13 +9,12 @@ import br.com.fiap.geoalerta.model.Usuario;
 import br.com.fiap.geoalerta.repository.AlertaRepository;
 import br.com.fiap.geoalerta.repository.EnderecoRepository;
 import br.com.fiap.geoalerta.repository.UsuarioRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
-@RequiredArgsConstructor
+
 public class AlertaService {
 
     private final UsuarioRepository usuarioRepository;
@@ -23,6 +22,12 @@ public class AlertaService {
     private final AlertaRepository alertaRepository;
 
     private final EnderecoRepository enderecoRepository;
+
+    public AlertaService(UsuarioRepository usuarioRepository, AlertaRepository alertaRepository, EnderecoRepository enderecoRepository) {
+        this.usuarioRepository = usuarioRepository;
+        this.alertaRepository = alertaRepository;
+        this.enderecoRepository = enderecoRepository;
+    }
 
     public AlertaResponse calcularAlerta(DadosClimaticosRequest dados) {
         int pontos = 0;

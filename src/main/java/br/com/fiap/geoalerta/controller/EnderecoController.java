@@ -3,7 +3,7 @@ package br.com.fiap.geoalerta.controller;
 import br.com.fiap.geoalerta.dto.EnderecoRequest;
 import br.com.fiap.geoalerta.dto.EnderecoResponse;
 import br.com.fiap.geoalerta.service.EnderecoService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/enderecos")
-@RequiredArgsConstructor
 public class EnderecoController {
 
     private final EnderecoService enderecoService;
+
+    @Autowired
+    public EnderecoController(EnderecoService enderecoService) {
+        this.enderecoService = enderecoService;
+    }
 
     @PostMapping
     public EnderecoResponse cadastrar(@RequestBody EnderecoRequest dto) {

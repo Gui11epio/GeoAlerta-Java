@@ -5,7 +5,6 @@ import br.com.fiap.geoalerta.dto.UsuarioResponse;
 import br.com.fiap.geoalerta.model.Usuario;
 import br.com.fiap.geoalerta.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class UsuarioService {
 
 
@@ -22,6 +20,12 @@ public class UsuarioService {
     private final ModelMapper modelMapper;
 
     private final PasswordEncoder passwordEncoder;
+
+    public UsuarioService(UsuarioRepository usuarioRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+        this.usuarioRepository = usuarioRepository;
+        this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public UsuarioResponse cadastrar(UsuarioRequest dto) {
         Usuario usuario = modelMapper.map(dto, Usuario.class);

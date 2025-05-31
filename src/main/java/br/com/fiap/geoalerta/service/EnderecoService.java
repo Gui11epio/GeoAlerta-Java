@@ -7,14 +7,12 @@ import br.com.fiap.geoalerta.model.Usuario;
 import br.com.fiap.geoalerta.repository.EnderecoRepository;
 import br.com.fiap.geoalerta.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class EnderecoService{
 
     private final EnderecoRepository enderecoRepository;
@@ -22,6 +20,12 @@ public class EnderecoService{
     private final UsuarioRepository usuarioRepository;
 
     private final ModelMapper modelMapper;
+
+    public EnderecoService(EnderecoRepository enderecoRepository, UsuarioRepository usuarioRepository, ModelMapper modelMapper) {
+        this.enderecoRepository = enderecoRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.modelMapper = modelMapper;
+    }
 
 
     public EnderecoResponse cadastrar(EnderecoRequest dto) {
