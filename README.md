@@ -7,7 +7,7 @@ Pedro Manzo Yokoo - 556115,
 Fernando Fernandes Prado - 557982
 
 
-# 📦 Sprint1 - API de Java
+# 📦 GEOALERTA - API de Java
 
 Este projeto é uma API REST desenvolvida com **Spring Boot**
 ## 🚀 Tecnologias Utilizadas
@@ -19,7 +19,6 @@ Este projeto é uma API REST desenvolvida com **Spring Boot**
 - Oracle Database
 - Swagger/OpenAPI
 - ModelMapper
-- Spring Cache
 - Bean Validation
 - Docker
 
