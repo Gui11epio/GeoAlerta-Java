@@ -1,4 +1,4 @@
-Grupo MF (Moto Find): 
+
 
 Guilherme Camasmie Laiber de Jesus - 554894, 
 
