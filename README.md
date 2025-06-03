@@ -1,15 +1,13 @@
+# 📦 GEOALERTA - API de Java
+Este projeto é uma API REST desenvolvida com **Spring Boot**, foco na coleta e análise de dados climáticos para identificar riscos de deslizamento em determinadas regiões. O sistema recebe dados de sensores/meteo, armazena informações de usuários e endereços, e calcula o risco com base em regras predefinidas.
 
-
+# GRUPO:
 Guilherme Camasmie Laiber de Jesus - 554894, 
 
 Pedro Manzo Yokoo - 556115, 
 
 Fernando Fernandes Prado - 557982
 
-
-# 📦 GEOALERTA - API de Java
-
-Este projeto é uma API REST desenvolvida com **Spring Boot**
 ## 🚀 Tecnologias Utilizadas
 
 - Java 17+
@@ -20,9 +18,10 @@ Este projeto é uma API REST desenvolvida com **Spring Boot**
 - Swagger/OpenAPI
 - ModelMapper
 - Bean Validation
-- Docker
+- Dockerfile
+- JWT
 
-## ⚙️ Como Executar o Projeto
+## ⚙️ Como Executar o Projeto Localmente
 
 ### Passos
 
@@ -34,7 +33,8 @@ Este projeto é uma API REST desenvolvida com **Spring Boot**
 ![image](https://github.com/user-attachments/assets/f55d4cf2-9cf6-432a-ac06-77f5b379b813)
 
 - Vá em **"Modify options"**  
-![image](https://github.com/user-attachments/assets/4c51e9ba-018e-4fc0-beac-81881b78a8ed)
+![image](https://github.com/user-attachments/assets/9d75404e-61af-4735-93e1-d9e4e9e4f0a8)
+
 
 - Ache e clique na opção "**Environment varibles**"  
 ![image](https://github.com/user-attachments/assets/bc1d0969-7712-4532-83a0-e6778dbecdc7)
@@ -55,6 +55,19 @@ Depois clique **OK**, **APPLY** e **RUN**
 ![image](https://github.com/user-attachments/assets/e2134110-0527-4bfb-a51a-964daa91b6a7)
 
 5. Volte para a Main do projeto e rode ele
+
+## ⚙️ Executar o Projeto pelo Render
+No caso do Render vai ser utilizado o nosso banco de dados
+
+Para acessar no Swagger:
+```bash
+https://geoalerta-java.onrender.com/swagger-ui/index.html#/
+```
+
+Para o Postman:
+```bash
+https://geoalerta-java.onrender.com/
+```
 
 
 
