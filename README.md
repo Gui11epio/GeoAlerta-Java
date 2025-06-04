@@ -1,7 +1,7 @@
 # 📦 GEOALERTA - API de Java
 Este projeto é uma API REST desenvolvida com **Spring Boot**, foco na coleta e análise de dados climáticos para identificar riscos de deslizamento em determinadas regiões. O sistema recebe dados de sensores/meteo, armazena informações de usuários e endereços, e calcula o risco com base em regras predefinidas.
 
-# GRUPO:
+## GRUPO:
 Guilherme Camasmie Laiber de Jesus - 554894, 
 
 Pedro Manzo Yokoo - 556115, 
@@ -68,6 +68,75 @@ Para o Postman:
 ```bash
 https://geoalerta-java.onrender.com/
 ```
+
+## 🧭 Como Utilizar a API via Swagger
+A API pode ser acessada via Swagger para fazer os testes do projeto. Disponível após subir o projeto:
+
+🔗 Acesse:
+
+http://localhost:8080/swagger-ui/index.html#/
+
+## 🗂️  Caminhos Disponíveis
+
+📍 USUÁRIO
+
+- Endpoint: GET/usuarios/{id}
+  
+     **Pega usuário por Id**
+
+- Endpoint: PUT/usuarios/{id}
+
+     **Atualiza o usuário por Id**
+
+- Endpoint: DELETE/usuarios/{id}
+
+     **Deleta o usuário por Id**
+
+- Endpoint: GET/usuarios
+
+     **Pega todos os usuários**
+
+- Endpoint: POST/usuarios
+
+     **Cadastra um usuário**
+
+
+📍 ENDEREÇO(Disponível apenas depois do Login)
+
+- Endpoint: GET/enderecos/{id}
+  
+     **Pega endereço por Id**
+
+- Endpoint: PUT/enderecos/{id}
+
+     **Atualiza o endereço por Id**
+
+- Endpoint: DELETE/enderecos/{id}
+
+     **Deleta o endereço por Id**
+
+- Endpoint: GET/enderecos
+
+     **Pega todos os endereços**
+
+- Endpoint: POST/enderecos
+
+     **Cadastra um endereço**
+
+
+
+📍 ALERTA(Disponível apenas depois do Login)
+
+- Endpoint: POST/alerta
+
+     **Faz o alerta sobre os deslizamentos, usando o id do usuário e endereço**
+
+
+📍 AUTH
+
+- Endpoint: POST/auth/login
+
+     **Faz o Login, mandando o email e senha já cadastrados para serem validados. Também gera o Tokem.**
 
 
 
