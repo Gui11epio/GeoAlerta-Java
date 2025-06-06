@@ -144,7 +144,7 @@ http://localhost:8080/swagger-ui/index.html#/
 - Cadastro de Usuario
 ```bash
 {
-  "userName": "João Silva",
+  "user_name": "João Silva",
   "senha": "senhaSegura123",
   "email": "joao.silva@example.com",
   "telefone": "(11) 91234-5678"
@@ -172,14 +172,14 @@ http://localhost:8080/swagger-ui/index.html#/
 ✅ 1. MUITO_BAIXO
 ```bash
 {
-  "Chuva": 0,
-  "Umidade": 40,
-  "Temperatura": 28,
-  "Vento": 2,
-  "Nuvens": 20,
-  "Pressao": 1015,
-  "UsuarioId": 1,
-  "EnderecoId": 1
+  "chuva": 0,
+  "umidade": 40,
+  "temperatura": 28,
+  "vento": 2,
+  "nuvens": 20,
+  "pressao": 1015,
+  "usuarioId": 1,
+  "enderecoId": 1
 }
 ```
 🔸Score ≈ 17.7 
