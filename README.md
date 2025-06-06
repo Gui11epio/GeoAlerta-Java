@@ -139,6 +139,139 @@ http://localhost:8080/swagger-ui/index.html#/
      **Faz o Login, mandando o email e senha já cadastrados para serem validados. Também gera o Tokem.**
 
 
+## Jsons para testes
+
+- Cadastro de Usuario
+```bash
+{
+  "userName": "João Silva",
+  "senha": "senhaSegura123",
+  "email": "joao.silva@example.com",
+  "telefone": "(11) 91234-5678"
+}
+```
+
+- Para fazer o Login
+```bash
+{
+  "email": "joao.silva@example.com",
+  "senha": "senhaSegura123"
+}
+```
+
+- Para cadastrar o Endereço(depois do Login)
+```bash
+{
+  "bairro": "Centro",
+  "cidade": "São Paulo",
+  "usuarioId": 1
+}
+```
+
+- Cadastro do Alerta(depois do Login)
+✅ 1. MUITO_BAIXO
+```bash
+{
+  "Chuva": 0,
+  "Umidade": 40,
+  "Temperatura": 28,
+  "Vento": 2,
+  "Nuvens": 20,
+  "Pressao": 1015,
+  "UsuarioId": 1,
+  "EnderecoId": 1
+}
+```
+🔸Score ≈ 17.7 
+🔸NivelRisco: MUITO BAIXO
+🔸Descrição: "Chuvas leves. Nenhum risco visível."
+🔸Probabilidade: 15
+
+
+✅ 2. BAIXO
+```bash
+{
+  "Chuva": 4,
+  "Umidade": 65,
+  "Temperatura": 25,
+  "Vento": 6,
+  "Nuvens": 50,
+  "Pressao": 1005,
+  "UsuarioId": 1,
+  "EnderecoId": 1
+}
+```
+Score ≈ 1.2 + 13 + 0.6 + 2.5 + 9.5 + 0 = 27.8
+🔸NivelRisco: BAIXO
+🔸Probabilidade: 15
+
+✅ 3. MODERADO
+```bash
+{
+  "Chuva": 12,
+  "Umidade": 80,
+  "Temperatura": 22,
+  "Vento": 10,
+  "Nuvens": 70,
+  "Pressao": 995,
+  "UsuarioId": 1,
+  "EnderecoId": 1
+}
+```
+Score ≈ 3.6 + 16 + 1 + 3.5 + 10.5 + 0 = 34.6
+🔸NivelRisco: MODERADO
+🔸Probabilidade: 40
+
+✅ 4. ALTO
+```bash
+{
+  "Chuva": 25,
+  "Umidade": 85,
+  "Temperatura": 17,
+  "Vento": 20,
+  "Nuvens": 85,
+  "Pressao": 980,
+  "UsuarioId": 1,
+  "EnderecoId": 1
+}
+```
+🔸Score ≈ 43.05 → MODERADO (quase ALTO)
+🔸Probabilidade: 40
+Aumente a Chuva ou abaixe mais a Temperatura para forçar ALTO
+
+✅ 5. CRÍTICO
+```bash
+{
+  "Chuva": 50,
+  "Umidade": 95,
+  "Temperatura": 10,
+  "Vento": 30,
+  "Nuvens": 95,
+  "Pressao": 960,
+  "UsuarioId": 1,
+  "EnderecoId": 1
+}
+```
+🔸Score ≈ 56.75 → ALTO
+
+✅ 6. CRÍTICO (forçado)
+Com Chuva e Temperatura mais extremas:
+```bash
+{
+  "Chuva": 100,
+  "Umidade": 100,
+  "Temperatura": 5,
+  "Vento": 40,
+  "Nuvens": 100,
+  "Pressao": 950,
+  "UsuarioId": 1,
+  "EnderecoId": 1
+}
+```
+🔸Score ≈ 30 + 20 + 4 + 5 + 15 + 1.5 = 75.5 → CRÍTICO
+
+
+
 
 
 
