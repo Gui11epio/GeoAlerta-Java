@@ -191,14 +191,14 @@ http://localhost:8080/swagger-ui/index.html#/
 ✅ 2. BAIXO
 ```bash
 {
-  "Chuva": 4,
-  "Umidade": 65,
-  "Temperatura": 25,
-  "Vento": 6,
-  "Nuvens": 50,
-  "Pressao": 1005,
-  "UsuarioId": 1,
-  "EnderecoId": 1
+  "chuva": 4,
+  "umidade": 65,
+  "temperatura": 25,
+  "vento": 6,
+  "nuvens": 50,
+  "pressao": 1005,
+  "usuarioId": 1,
+  "enderecoId": 1
 }
 ```
 Score ≈ 1.2 + 13 + 0.6 + 2.5 + 9.5 + 0 = 27.8
@@ -208,14 +208,14 @@ Score ≈ 1.2 + 13 + 0.6 + 2.5 + 9.5 + 0 = 27.8
 ✅ 3. MODERADO
 ```bash
 {
-  "Chuva": 12,
-  "Umidade": 80,
-  "Temperatura": 22,
-  "Vento": 10,
-  "Nuvens": 70,
-  "Pressao": 995,
-  "UsuarioId": 1,
-  "EnderecoId": 1
+  "chuva": 12,
+  "umidade": 80,
+  "temperatura": 22,
+  "vento": 10,
+  "nuvens": 70,
+  "pressao": 995,
+  "usuarioId": 1,
+  "enderecoId": 1
 }
 ```
 Score ≈ 3.6 + 16 + 1 + 3.5 + 10.5 + 0 = 34.6
@@ -225,14 +225,14 @@ Score ≈ 3.6 + 16 + 1 + 3.5 + 10.5 + 0 = 34.6
 ✅ 4. ALTO
 ```bash
 {
-  "Chuva": 25,
-  "Umidade": 85,
-  "Temperatura": 17,
-  "Vento": 20,
-  "Nuvens": 85,
-  "Pressao": 980,
-  "UsuarioId": 1,
-  "EnderecoId": 1
+  "chuva": 25,
+  "umidade": 85,
+  "temperatura": 17,
+  "vento": 20,
+  "nuvens": 85,
+  "pressao": 980,
+  "usuarioId": 1,
+  "enderecoId": 1
 }
 ```
 🔸Score ≈ 43.05 → MODERADO (quase ALTO)
@@ -242,14 +242,14 @@ Aumente a Chuva ou abaixe mais a Temperatura para forçar ALTO
 ✅ 5. CRÍTICO
 ```bash
 {
-  "Chuva": 50,
-  "Umidade": 95,
-  "Temperatura": 10,
-  "Vento": 30,
-  "Nuvens": 95,
-  "Pressao": 960,
-  "UsuarioId": 1,
-  "EnderecoId": 1
+  "chuva": 50,
+  "umidade": 95,
+  "temperatura": 10,
+  "vento": 30,
+  "nuvens": 95,
+  "pressao": 960,
+  "usuarioId": 1,
+  "enderecoId": 1
 }
 ```
 🔸Score ≈ 56.75 → ALTO
@@ -258,14 +258,14 @@ Aumente a Chuva ou abaixe mais a Temperatura para forçar ALTO
 Com Chuva e Temperatura mais extremas:
 ```bash
 {
-  "Chuva": 100,
-  "Umidade": 100,
-  "Temperatura": 5,
-  "Vento": 40,
-  "Nuvens": 100,
-  "Pressao": 950,
-  "UsuarioId": 1,
-  "EnderecoId": 1
+  "chuva": 100,
+  "umidade": 100,
+  "temperatura": 5,
+  "vento": 40,
+  "nuvens": 100,
+  "pressao": 950,
+  "usuarioId": 1,
+  "enderecoId": 1
 }
 ```
 🔸Score ≈ 30 + 20 + 4 + 5 + 15 + 1.5 = 75.5 → CRÍTICO
